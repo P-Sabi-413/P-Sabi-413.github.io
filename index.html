@@ -4,185 +4,820 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Security Log | 기술 블로그</title>
+  <meta name="description" content="Security Log - Cybersecurity Learning Portfolio">
+  <title>Security Log | Cybersecurity Portfolio</title>
 
   <style>
+    :root {
+      --bg: #fff9df;
+      --surface: #fffdf5;
+      --surface-hover: #fff1bd;
+      --yellow: #f3cd58;
+      --yellow-dark: #d8a923;
+      --text: #282c35;
+      --muted: #77766f;
+      --border: #e9dfbd;
+      --navy: #303a52;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(72, 59, 24, 0.06);
+    }
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 95px;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, "Malgun Gothic", sans-serif;
-      background: #0b1120;
-      color: #e2e8f0;
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Pretendard", "Noto Sans KR",
+                   -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
     }
 
     .container {
-      max-width: 1000px;
+      width: min(1080px, 90%);
       margin: 0 auto;
-      padding: 40px 24px;
     }
+
+    /* Navigation */
 
     header {
-      padding-bottom: 24px;
-      border-bottom: 1px solid #29364c;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 249, 223, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
 
-    header h1 {
-      margin: 0;
-      color: #60a5fa;
-      font-size: 28px;
+    nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
     }
 
-    header p {
-      margin: 4px 0 0;
-      color: #94a3b8;
-      font-size: 13px;
-      letter-spacing: 2px;
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 850;
+      letter-spacing: -0.7px;
+      white-space: nowrap;
     }
 
-    .intro {
-      padding: 60px 0 36px;
+    .logo span {
+      color: var(--yellow-dark);
     }
 
-    .intro .label {
-      color: #60a5fa;
-      font-size: 13px;
-      font-weight: bold;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
     }
 
-    .intro h2 {
-      margin: 12px 0;
-      font-size: clamp(28px, 5vw, 42px);
-      line-height: 1.3;
+    .nav-links a:hover {
+      color: var(--text);
     }
 
-    .intro p {
-      color: #94a3b8;
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      padding: 7px 12px;
+      cursor: pointer;
     }
 
-    .categories {
+    /* Hero */
+
+    .hero {
+      padding: 100px 0 76px;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: 1.35fr 0.8fr;
+      gap: 48px;
+      align-items: center;
     }
 
-    .card {
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background: var(--surface);
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 650;
+      margin-bottom: 22px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #69a875;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      line-height: 1.12;
+      letter-spacing: -2.5px;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: var(--yellow-dark);
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 550px;
+      margin-bottom: 28px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 19px;
+      border-radius: 11px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .terminal {
+      background: var(--navy);
+      color: #f7f4e9;
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.88rem;
+      overflow-wrap: anywhere;
+    }
+
+    .terminal-top {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .terminal-top span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #e6c56c;
+    }
+
+    .terminal p {
+      margin: 12px 0;
+    }
+
+    .terminal .prompt {
+      color: #f3d777;
+    }
+
+    .terminal .output {
+      color: #d5dfc4;
+    }
+
+    /* Common sections */
+
+    section {
+      padding: 60px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .section-label {
+      color: var(--yellow-dark);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 4vw, 2.3rem);
+      line-height: 1.3;
+      letter-spacing: -0.8px;
+      margin: 7px 0;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    /* About */
+
+    .about-card {
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .about-card p + p {
+      margin-top: 12px;
+    }
+
+    /* Category cards */
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .category-card {
       display: block;
-      padding: 24px;
-      background: #151e30;
-      border: 1px solid #29364c;
-      border-radius: 12px;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s, border-color 0.2s;
+      min-height: 190px;
+      padding: 23px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: transform 0.2s, background 0.2s,
+                  box-shadow 0.2s;
     }
 
-    .card:hover {
+    .category-card:hover {
       transform: translateY(-4px);
-      border-color: #60a5fa;
+      background: #fffef9;
+      box-shadow: var(--shadow);
     }
 
-    .number {
-      color: #60a5fa;
-      font-size: 13px;
+    .category-number {
+      color: var(--yellow-dark);
+      font-family: Consolas, monospace;
+      font-size: 0.82rem;
+      font-weight: 800;
     }
 
-    .card h3 {
-      margin: 12px 0 6px;
-      font-size: 21px;
+    .category-icon {
+      display: block;
+      font-size: 1.65rem;
+      margin: 10px 0 5px;
     }
 
-    .card p {
-      margin: 0;
-      color: #94a3b8;
-      font-size: 14px;
+    .category-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 5px;
+    }
+
+    .category-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .arrow {
+      display: block;
+      text-align: right;
+      color: var(--yellow-dark);
+      font-weight: 800;
+    }
+
+    /* Individual learning sections */
+
+    .entry-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .entry {
+      padding: 22px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .entry h3 {
+      font-size: 1.04rem;
+      margin: 5px 0;
+    }
+
+    .entry p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .entry-meta {
+      color: var(--yellow-dark);
+      font-size: 0.77rem;
+      font-weight: 750;
+      letter-spacing: 0.4px;
+    }
+
+    .entry-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 750;
+    }
+
+    .entry-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+
+    .contact-card {
+      padding: 35px;
+      background: var(--navy);
+      color: #fffdf5;
+      border-radius: var(--radius);
+    }
+
+    .contact-card p {
+      color: #e0dfd5;
+      margin: 10px 0 22px;
+    }
+
+    .contact-card .button {
+      background: var(--yellow);
+      color: var(--text);
     }
 
     footer {
-      margin-top: 48px;
-      padding-top: 20px;
-      border-top: 1px solid #29364c;
-      color: #64748b;
-      font-size: 13px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
     }
 
-    @media (max-width: 600px) {
-      .categories {
+    /* Responsive */
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-top: 65px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 71px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .category-grid {
         grid-template-columns: 1fr;
       }
 
-      .intro {
-        padding-top: 40px;
+      .category-card {
+        min-height: 160px;
+      }
+
+      .contact-card,
+      .about-card {
+        padding: 22px;
+      }
+
+      h1 {
+        letter-spacing: -1.5px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition: none !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <!-- Navigation -->
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo">Security<span>.</span>Log</a>
 
-    <header>
-      <h1>Security Log</h1>
-      <p>LEARN · BUILD · ANALYZE</p>
-    </header>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        ☰ Menu
+      </button>
 
-    <section class="intro">
-      <span class="label">MY TECHNICAL BLOG</span>
-      <h2>기록하고, 분석하고,<br>성장하기.</h2>
-      <p>
-        개발과 사이버보안 학습 과정,
-        실습 결과 및 기술적 인사이트를 기록합니다.
-      </p>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#categories">카테고리</a></li>
+        <li><a href="#development">개발</a></li>
+        <li><a href="#ctf">CTF</a></li>
+        <li><a href="#research">연구</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <div class="container hero" id="home">
+      <div>
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          CYBERSECURITY LEARNING LOG
+        </div>
+
+        <h1>
+          Learn.<br>
+          Analyze.<br>
+          <span>Document.</span>
+        </h1>
+
+        <p class="hero-description">
+          보안을 배우고, 직접 실습하고, 분석한 내용을 기록합니다.
+          개발부터 CTF, 디지털 포렌식, 보안 연구까지
+          성장 과정을 차곡차곡 쌓아 가는 공간입니다.
+        </p>
+
+        <div class="actions">
+          <a class="button button-primary" href="#categories">
+            기록 살펴보기 ↗
+          </a>
+          <a class="button button-secondary" href="#about">
+            About Me
+          </a>
+        </div>
+      </div>
+
+      <div class="terminal" aria-label="터미널 스타일 소개">
+        <div class="terminal-top">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="prompt">$ whoami</p>
+        <p class="output">security_learner</p>
+        <p class="prompt">$ cat interests.txt</p>
+        <p class="output">
+          digital_forensics<br>
+          incident_response<br>
+          security_research
+        </p>
+        <p class="prompt">$ echo $STATUS</p>
+        <p class="output">Always Learning_</p>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">01 / About</span>
+          <h2>About This Log</h2>
+          <p class="section-description">
+            단순한 결과물이 아니라, 배우고 고민한 과정까지 기록합니다.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <p>
+            안녕하세요! 이곳은 사이버보안 학습과 기술 탐구를
+            기록하는 개인 포트폴리오입니다.
+          </p>
+          <p>
+            현재 관심 분야와 학습 내용을 정리하고, 실습 결과와
+            프로젝트를 통해 배운 점을 문서화합니다.
+            아직 배우는 과정에 있는 주제도 솔직하게 기록하며
+            꾸준히 발전시켜 나가고 있습니다.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <main class="categories">
+    <!-- Six categories -->
+    <section id="categories">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">02 / Explore</span>
+          <h2>Learning Categories</h2>
+          <p class="section-description">
+            관심 있는 분야를 선택하면 해당 기록으로 이동합니다.
+          </p>
+        </div>
 
-      <a class="card" href="#development">
-        <span class="number">01 / DEVELOPMENT</span>
-        <h3>개발</h3>
-        <p>코드, 개발 프로젝트 및 프로그래밍 학습</p>
-      </a>
+        <div class="category-grid">
+          <a class="category-card" href="#development">
+            <span class="category-number">01</span>
+            <span class="category-icon">⌨️</span>
+            <h3>개발</h3>
+            <p>C, Python, 알고리즘 및 개발 프로젝트</p>
+            <span class="arrow">↗</span>
+          </a>
 
-      <a class="card" href="#ctf">
-        <span class="number">02 / CTF & WARGAME</span>
-        <h3>CTF / Wargame</h3>
-        <p>문제 풀이, 취약점 분석 및 실습 기록</p>
-      </a>
+          <a class="category-card" href="#ctf">
+            <span class="category-number">02</span>
+            <span class="category-icon">🔐</span>
+            <h3>CTF / Wargame</h3>
+            <p>문제 풀이, 분석 과정, Write-up</p>
+            <span class="arrow">↗</span>
+          </a>
 
-      <a class="card" href="#bug-bounty">
-        <span class="number">03 / BUG BOUNTY</span>
-        <h3>Bug Bounty</h3>
-        <p>허가된 환경에서의 취약점 연구</p>
-      </a>
+          <a class="category-card" href="#bug-bounty">
+            <span class="category-number">03</span>
+            <span class="category-icon">🛡️</span>
+            <h3>Bug Bounty</h3>
+            <p>웹 보안 학습과 허가된 실습 기록</p>
+            <span class="arrow">↗</span>
+          </a>
 
-      <a class="card" href="#technical-writing">
-        <span class="number">04 / TECHNICAL WRITING</span>
-        <h3>블로그 / 기술문서</h3>
-        <p>기술 정리, 학습 노트 및 가이드</p>
-      </a>
+          <a class="category-card" href="#blog">
+            <span class="category-number">04</span>
+            <span class="category-icon">📝</span>
+            <h3>블로그 / 기술문서</h3>
+            <p>개념 정리, 실습 노트, 기술 문서</p>
+            <span class="arrow">↗</span>
+          </a>
 
-      <a class="card" href="#research">
-        <span class="number">05 / RESEARCH</span>
-        <h3>논문 / 컨퍼런스</h3>
-        <p>논문 리뷰, 컨퍼런스 및 발표 기록</p>
-      </a>
+          <a class="category-card" href="#research">
+            <span class="category-number">05</span>
+            <span class="category-icon">📚</span>
+            <h3>논문 / 컨퍼런스</h3>
+            <p>논문 리뷰, 발표 자료, 기술 동향</p>
+            <span class="arrow">↗</span>
+          </a>
 
-      <a class="card" href="#achievements">
-        <span class="number">06 / ACHIEVEMENTS</span>
-        <h3>공모전 / 자격증</h3>
-        <p>대회 참가, 자격증 및 성과 기록</p>
-      </a>
+          <a class="category-card" href="#achievements">
+            <span class="category-number">06</span>
+            <span class="category-icon">🏆</span>
+            <h3>공모전 / 자격증</h3>
+            <p>참여 기록, 수상 내역, 자격증</p>
+            <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-    </main>
+    <!-- 01 Development -->
+    <section id="development">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Category 01</span>
+          <h2>개발</h2>
+          <p class="section-description">
+            코딩 학습과 직접 구현한 결과물을 기록합니다.
+          </p>
+        </div>
+        <div class="entry-list">
+          <article class="entry">
+            <span class="entry-meta">PROGRAMMING</span>
+            <h3>개발 학습 기록</h3>
+            <p>
+              공부한 언어, 구현한 기능, 마주친 오류와 해결 과정을
+              이곳에 정리하세요.
+            </p>
+            <a class="entry-link"
+               href="https://github.com/">
+              GitHub 프로젝트 ↗
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-      © 2026 Security Log · My Learning Archive
-    </footer>
+    <!-- 02 CTF -->
+    <section id="ctf">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Category 02</span>
+          <h2>CTF / Wargame</h2>
+          <p class="section-description">
+            문제 접근 방법과 핵심 개념, 풀이를 기록합니다.
+          </p>
+        </div>
+        <div class="entry-list">
+          <article class="entry">
+            <span class="entry-meta">WRITE-UP</span>
+            <h3>아직 등록된 풀이가 없습니다.</h3>
+            <p>
+              문제를 해결한 뒤 문제 유형, 풀이 과정, 배운 점을
+              정리해 보세요. 공개 가능한 내용만 게시하세요.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  </div>
+    <!-- 03 Bug Bounty -->
+    <section id="bug-bounty">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Category 03</span>
+          <h2>Bug Bounty</h2>
+          <p class="section-description">
+            웹 취약점 학습과 허가된 보안 테스트를 기록합니다.
+          </p>
+        </div>
+        <div class="entry-list">
+          <article class="entry">
+            <span class="entry-meta">WEB SECURITY</span>
+            <h3>웹 보안 학습 노트</h3>
+            <p>
+              보안 개념, 실습 환경, 취약점의 원인과 방어 방법을
+              정리해 보세요. 테스트는 허가된 대상에서만 진행합니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Blog -->
+    <section id="blog">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Category 04</span>
+          <h2>블로그 / 기술문서</h2>
+          <p class="section-description">
+            다시 읽어도 이해할 수 있도록 개념과 실습을 문서화합니다.
+          </p>
+        </div>
+        <div class="entry-list">
+          <article class="entry">
+            <span class="entry-meta">TECHNICAL NOTES</span>
+            <h3>학습 노트</h3>
+            <p>
+              네트워크, 운영체제, 디지털 포렌식 등 공부한 내용을
+              주제별로 정리해 보세요.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Research -->
+    <section id="research">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Category 05</span>
+          <h2>논문 / 컨퍼런스</h2>
+          <p class="section-description">
+            최신 연구와 발표를 읽고 핵심 아이디어를 정리합니다.
+          </p>
+        </div>
+        <div class="entry-list">
+          <article class="entry">
+            <span class="entry-meta">RESEARCH</span>
+            <h3>논문 리뷰</h3>
+            <p>
+              연구 목적, 핵심 기술, 실험 결과, 한계점 및
+              개인적인 생각을 기록해 보세요.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Achievements -->
+    <section id="achievements">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Category 06</span>
+          <h2>공모전 / 자격증</h2>
+          <p class="section-description">
+            참여한 활동과 실제로 취득한 자격을 기록합니다.
+          </p>
+        </div>
+        <div class="entry-list">
+          <article class="entry">
+            <span class="entry-meta">ACHIEVEMENTS</span>
+            <h3>활동 기록</h3>
+            <p>
+              공모전 참가, 수상 내역, 자격증 취득 정보와
+              활동을 통해 배운 점을 정리해 보세요.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <span class="section-label">Get in Touch</span>
+          <h2>Let's Keep Learning.</h2>
+          <p>
+            학습 기록과 프로젝트를 통해 계속 성장해 나갑니다.
+            코드와 기술 문서는 GitHub에서 확인할 수 있습니다.
+          </p>
+          <a class="button"
+             href="https://github.com/"
+             target="_blank"
+             rel="noopener noreferrer">
+            Visit GitHub ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Security Log · Learn, Analyze, Document.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Automatically update the year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "메뉴 닫기" : "메뉴 열기"
+      );
+    });
+
+    // Close the mobile menu after selecting a section
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "메뉴 열기");
+      });
+    });
+  </script>
 </body>
 </html>
