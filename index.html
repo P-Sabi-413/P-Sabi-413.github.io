@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Security Log | 기술 블로그</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Malgun Gothic", sans-serif;
+      background: #0b1120;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    header {
+      padding-bottom: 24px;
+      border-bottom: 1px solid #29364c;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #60a5fa;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      color: #94a3b8;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .intro {
+      padding: 60px 0 36px;
+    }
+
+    .intro .label {
+      color: #60a5fa;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .intro h2 {
+      margin: 12px 0;
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.3;
+    }
+
+    .intro p {
+      color: #94a3b8;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      display: block;
+      padding: 24px;
+      background: #151e30;
+      border: 1px solid #29364c;
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #60a5fa;
+    }
+
+    .number {
+      color: #60a5fa;
+      font-size: 13px;
+    }
+
+    .card h3 {
+      margin: 12px 0 6px;
+      font-size: 21px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid #29364c;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .categories {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        padding-top: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <h1>Security Log</h1>
+      <p>LEARN · BUILD · ANALYZE</p>
+    </header>
+
+    <section class="intro">
+      <span class="label">MY TECHNICAL BLOG</span>
+      <h2>기록하고, 분석하고,<br>성장하기.</h2>
+      <p>
+        개발과 사이버보안 학습 과정,
+        실습 결과 및 기술적 인사이트를 기록합니다.
+      </p>
+    </section>
+
+    <main class="categories">
+
+      <a class="card" href="#development">
+        <span class="number">01 / DEVELOPMENT</span>
+        <h3>개발</h3>
+        <p>코드, 개발 프로젝트 및 프로그래밍 학습</p>
+      </a>
+
+      <a class="card" href="#ctf">
+        <span class="number">02 / CTF & WARGAME</span>
+        <h3>CTF / Wargame</h3>
+        <p>문제 풀이, 취약점 분석 및 실습 기록</p>
+      </a>
+
+      <a class="card" href="#bug-bounty">
+        <span class="number">03 / BUG BOUNTY</span>
+        <h3>Bug Bounty</h3>
+        <p>허가된 환경에서의 취약점 연구</p>
+      </a>
+
+      <a class="card" href="#technical-writing">
+        <span class="number">04 / TECHNICAL WRITING</span>
+        <h3>블로그 / 기술문서</h3>
+        <p>기술 정리, 학습 노트 및 가이드</p>
+      </a>
+
+      <a class="card" href="#research">
+        <span class="number">05 / RESEARCH</span>
+        <h3>논문 / 컨퍼런스</h3>
+        <p>논문 리뷰, 컨퍼런스 및 발표 기록</p>
+      </a>
+
+      <a class="card" href="#achievements">
+        <span class="number">06 / ACHIEVEMENTS</span>
+        <h3>공모전 / 자격증</h3>
+        <p>대회 참가, 자격증 및 성과 기록</p>
+      </a>
+
+    </main>
+
+    <footer>
+      © 2026 Security Log · My Learning Archive
+    </footer>
+
+  </div>
+</body>
+</html>
