@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Security Log - Cybersecurity Learning Portfolio">
-  <title>Security Log | Cybersecurity Portfolio</title>
+  <meta name="description" content="413.Log - SABI's Cybersecurity Growth Journal">
+  <title>413.Log | SABI's Growth Journal</title>
 
   <style>
     :root {
@@ -36,8 +36,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: "Pretendard", "Noto Sans KR",
-                   -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
     }
 
@@ -75,7 +74,7 @@
     }
 
     .logo {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 850;
       letter-spacing: -0.7px;
       white-space: nowrap;
@@ -90,7 +89,7 @@
       align-items: center;
       gap: 23px;
       list-style: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
     }
 
@@ -126,9 +125,10 @@
       border-radius: 30px;
       background: var(--surface);
       color: var(--navy);
-      font-size: 0.82rem;
-      font-weight: 650;
+      font-size: 0.78rem;
+      font-weight: 700;
       margin-bottom: 22px;
+      letter-spacing: 0.5px;
     }
 
     .status-dot {
@@ -139,7 +139,7 @@
     }
 
     h1 {
-      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
       line-height: 1.12;
       letter-spacing: -2.5px;
       margin-bottom: 20px;
@@ -151,7 +151,7 @@
 
     .hero-description {
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1.03rem;
       max-width: 550px;
       margin-bottom: 28px;
     }
@@ -169,7 +169,7 @@
       padding: 11px 19px;
       border-radius: 11px;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       transition: transform 0.2s, background 0.2s;
     }
 
@@ -235,7 +235,7 @@
 
     .section-label {
       color: var(--yellow-dark);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 850;
       letter-spacing: 1.7px;
       text-transform: uppercase;
@@ -251,20 +251,6 @@
     .section-description {
       color: var(--muted);
       max-width: 650px;
-    }
-
-    /* About */
-
-    .about-card {
-      padding: 28px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .about-card p + p {
-      margin-top: 12px;
     }
 
     /* Category cards */
@@ -306,13 +292,13 @@
     }
 
     .category-card h3 {
-      font-size: 1.08rem;
+      font-size: 1.03rem;
       margin-bottom: 5px;
     }
 
     .category-card p {
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
 
     .arrow {
@@ -322,7 +308,7 @@
       font-weight: 800;
     }
 
-    /* Individual learning sections */
+    /* Individual sections */
 
     .entry-list {
       display: grid;
@@ -348,9 +334,9 @@
 
     .entry-meta {
       color: var(--yellow-dark);
-      font-size: 0.77rem;
+      font-size: 0.75rem;
       font-weight: 750;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.8px;
     }
 
     .entry-link {
@@ -392,7 +378,7 @@
       text-align: center;
     }
 
-    /* Responsive */
+    /* Responsive design */
 
     @media (max-width: 760px) {
       .hero {
@@ -437,8 +423,7 @@
         min-height: 160px;
       }
 
-      .contact-card,
-      .about-card {
+      .contact-card {
         padding: 22px;
       }
 
@@ -463,12 +448,12 @@
   <!-- Navigation -->
   <header>
     <nav class="container">
-      <a href="#home" class="logo">Security<span>.</span>Log</a>
+      <a href="#home" class="logo">413<span>.</span>Log</a>
 
       <button
         class="menu-toggle"
         id="menuToggle"
-        aria-label="메뉴 열기"
+        aria-label="Open menu"
         aria-expanded="false"
         aria-controls="navLinks"
       >
@@ -476,12 +461,12 @@
       </button>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">소개</a></li>
-        <li><a href="#categories">카테고리</a></li>
-        <li><a href="#development">개발</a></li>
-        <li><a href="#ctf">CTF</a></li>
-        <li><a href="#research">연구</a></li>
-        <li><a href="#contact">연락처</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#development">Development</a></li>
+        <li><a href="#ctf">CTF / Wargame</a></li>
+        <li><a href="#bug-bounty">Bug Bounty</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#achievements">Achievements</a></li>
       </ul>
     </nav>
   </header>
@@ -492,82 +477,58 @@
       <div>
         <div class="eyebrow">
           <span class="status-dot"></span>
-          CYBERSECURITY LEARNING LOG
+          SABI'S CYBERSECURITY JOURNEY
         </div>
 
         <h1>
-          Learn.<br>
-          Analyze.<br>
-          <span>Document.</span>
+          SABI's<br>
+          Growth<br>
+          <span>Journal.</span>
         </h1>
 
         <p class="hero-description">
-          보안을 배우고, 직접 실습하고, 분석한 내용을 기록합니다.
-          개발부터 CTF, 디지털 포렌식, 보안 연구까지
-          성장 과정을 차곡차곡 쌓아 가는 공간입니다.
+          A space documenting my sincere efforts to become
+          a guardian of the cyber world, one step at a time.
+          Every lesson, challenge, and discovery becomes part
+          of my journey toward a more secure digital world.
         </p>
 
         <div class="actions">
           <a class="button button-primary" href="#categories">
-            기록 살펴보기 ↗
+            Explore My Journey ↗
           </a>
-          <a class="button button-secondary" href="#about">
-            About Me
+          <a class="button button-secondary" href="#contact">
+            Find Me Online
           </a>
         </div>
       </div>
 
-      <div class="terminal" aria-label="터미널 스타일 소개">
+      <div class="terminal" aria-label="Terminal-style introduction">
         <div class="terminal-top">
           <span></span><span></span><span></span>
         </div>
         <p class="prompt">$ whoami</p>
-        <p class="output">security_learner</p>
-        <p class="prompt">$ cat interests.txt</p>
+        <p class="output">sabi</p>
+        <p class="prompt">$ cat mission.txt</p>
         <p class="output">
-          digital_forensics<br>
-          incident_response<br>
-          security_research
+          learn_security<br>
+          investigate_incidents<br>
+          protect_the_digital_world
         </p>
         <p class="prompt">$ echo $STATUS</p>
         <p class="output">Always Learning_</p>
       </div>
     </div>
 
-    <!-- About -->
-    <section id="about">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-label">01 / About</span>
-          <h2>About This Log</h2>
-          <p class="section-description">
-            단순한 결과물이 아니라, 배우고 고민한 과정까지 기록합니다.
-          </p>
-        </div>
-
-        <div class="about-card">
-          <p>
-            안녕하세요! 이곳은 사이버보안 학습과 기술 탐구를
-            기록하는 개인 포트폴리오입니다.
-          </p>
-          <p>
-            현재 관심 분야와 학습 내용을 정리하고, 실습 결과와
-            프로젝트를 통해 배운 점을 문서화합니다.
-            아직 배우는 과정에 있는 주제도 솔직하게 기록하며
-            꾸준히 발전시켜 나가고 있습니다.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- Six categories -->
     <section id="categories">
       <div class="container">
         <div class="section-heading">
-          <span class="section-label">02 / Explore</span>
-          <h2>Learning Categories</h2>
+          <span class="section-label">01 / Explore</span>
+          <h2>My Learning Archive</h2>
           <p class="section-description">
-            관심 있는 분야를 선택하면 해당 기록으로 이동합니다.
+            Explore the topics I study, the challenges I solve,
+            and the knowledge I build along the way.
           </p>
         </div>
 
@@ -575,8 +536,8 @@
           <a class="category-card" href="#development">
             <span class="category-number">01</span>
             <span class="category-icon">⌨️</span>
-            <h3>개발</h3>
-            <p>C, Python, 알고리즘 및 개발 프로젝트</p>
+            <h3>Development</h3>
+            <p>Programming, algorithms, and personal projects.</p>
             <span class="arrow">↗</span>
           </a>
 
@@ -584,7 +545,7 @@
             <span class="category-number">02</span>
             <span class="category-icon">🔐</span>
             <h3>CTF / Wargame</h3>
-            <p>문제 풀이, 분석 과정, Write-up</p>
+            <p>Challenge solutions, analysis, and write-ups.</p>
             <span class="arrow">↗</span>
           </a>
 
@@ -592,31 +553,31 @@
             <span class="category-number">03</span>
             <span class="category-icon">🛡️</span>
             <h3>Bug Bounty</h3>
-            <p>웹 보안 학습과 허가된 실습 기록</p>
+            <p>Web security research and authorized testing.</p>
             <span class="arrow">↗</span>
           </a>
 
-          <a class="category-card" href="#blog">
+          <a class="category-card" href="#technical-blog">
             <span class="category-number">04</span>
             <span class="category-icon">📝</span>
-            <h3>블로그 / 기술문서</h3>
-            <p>개념 정리, 실습 노트, 기술 문서</p>
+            <h3>Blog / Technical Notes</h3>
+            <p>Study notes, technical guides, and documentation.</p>
             <span class="arrow">↗</span>
           </a>
 
           <a class="category-card" href="#research">
             <span class="category-number">05</span>
             <span class="category-icon">📚</span>
-            <h3>논문 / 컨퍼런스</h3>
-            <p>논문 리뷰, 발표 자료, 기술 동향</p>
+            <h3>Papers / Conferences</h3>
+            <p>Research reviews, conference talks, and trends.</p>
             <span class="arrow">↗</span>
           </a>
 
           <a class="category-card" href="#achievements">
             <span class="category-number">06</span>
             <span class="category-icon">🏆</span>
-            <h3>공모전 / 자격증</h3>
-            <p>참여 기록, 수상 내역, 자격증</p>
+            <h3>Competitions / Certifications</h3>
+            <p>Competition records, awards, and certifications.</p>
             <span class="arrow">↗</span>
           </a>
         </div>
@@ -628,22 +589,23 @@
       <div class="container">
         <div class="section-heading">
           <span class="section-label">Category 01</span>
-          <h2>개발</h2>
+          <h2>Development</h2>
           <p class="section-description">
-            코딩 학습과 직접 구현한 결과물을 기록합니다.
+            Learning to code and building projects through practice.
           </p>
         </div>
+
         <div class="entry-list">
           <article class="entry">
             <span class="entry-meta">PROGRAMMING</span>
-            <h3>개발 학습 기록</h3>
+            <h3>Development Learning Log</h3>
             <p>
-              공부한 언어, 구현한 기능, 마주친 오류와 해결 과정을
-              이곳에 정리하세요.
+              Document programming concepts, implemented features,
+              debugging processes, and lessons learned.
             </p>
             <a class="entry-link"
                href="https://github.com/">
-              GitHub 프로젝트 ↗
+              Explore GitHub Projects ↗
             </a>
           </article>
         </div>
@@ -657,16 +619,19 @@
           <span class="section-label">Category 02</span>
           <h2>CTF / Wargame</h2>
           <p class="section-description">
-            문제 접근 방법과 핵심 개념, 풀이를 기록합니다.
+            Breaking down challenges and documenting the reasoning
+            behind each solution.
           </p>
         </div>
+
         <div class="entry-list">
           <article class="entry">
-            <span class="entry-meta">WRITE-UP</span>
-            <h3>아직 등록된 풀이가 없습니다.</h3>
+            <span class="entry-meta">WRITE-UPS</span>
+            <h3>Challenge Write-ups</h3>
             <p>
-              문제를 해결한 뒤 문제 유형, 풀이 과정, 배운 점을
-              정리해 보세요. 공개 가능한 내용만 게시하세요.
+              Record challenge categories, investigation steps,
+              solution logic, and key takeaways.
+              Only publish material that is permitted to be shared.
             </p>
           </article>
         </div>
@@ -680,39 +645,42 @@
           <span class="section-label">Category 03</span>
           <h2>Bug Bounty</h2>
           <p class="section-description">
-            웹 취약점 학습과 허가된 보안 테스트를 기록합니다.
+            Studying web vulnerabilities and responsible security testing.
           </p>
         </div>
+
         <div class="entry-list">
           <article class="entry">
             <span class="entry-meta">WEB SECURITY</span>
-            <h3>웹 보안 학습 노트</h3>
+            <h3>Web Security Research Notes</h3>
             <p>
-              보안 개념, 실습 환경, 취약점의 원인과 방어 방법을
-              정리해 보세요. 테스트는 허가된 대상에서만 진행합니다.
+              Document vulnerability concepts, root causes,
+              reproduction steps in authorized environments,
+              and defensive measures.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 04 Blog -->
-    <section id="blog">
+    <!-- 04 Blog / Technical Notes -->
+    <section id="technical-blog">
       <div class="container">
         <div class="section-heading">
           <span class="section-label">Category 04</span>
-          <h2>블로그 / 기술문서</h2>
+          <h2>Blog / Technical Notes</h2>
           <p class="section-description">
-            다시 읽어도 이해할 수 있도록 개념과 실습을 문서화합니다.
+            Turning what I learn into clear, reusable knowledge.
           </p>
         </div>
+
         <div class="entry-list">
           <article class="entry">
-            <span class="entry-meta">TECHNICAL NOTES</span>
-            <h3>학습 노트</h3>
+            <span class="entry-meta">TECHNICAL DOCUMENTATION</span>
+            <h3>Study Notes</h3>
             <p>
-              네트워크, 운영체제, 디지털 포렌식 등 공부한 내용을
-              주제별로 정리해 보세요.
+              Organize concepts, practical exercises, tool usage,
+              and troubleshooting notes across cybersecurity topics.
             </p>
           </article>
         </div>
@@ -724,18 +692,19 @@
       <div class="container">
         <div class="section-heading">
           <span class="section-label">Category 05</span>
-          <h2>논문 / 컨퍼런스</h2>
+          <h2>Papers / Conferences</h2>
           <p class="section-description">
-            최신 연구와 발표를 읽고 핵심 아이디어를 정리합니다.
+            Exploring new research and ideas shaping cybersecurity.
           </p>
         </div>
+
         <div class="entry-list">
           <article class="entry">
-            <span class="entry-meta">RESEARCH</span>
-            <h3>논문 리뷰</h3>
+            <span class="entry-meta">RESEARCH & INSIGHTS</span>
+            <h3>Paper Reviews</h3>
             <p>
-              연구 목적, 핵심 기술, 실험 결과, 한계점 및
-              개인적인 생각을 기록해 보세요.
+              Summarize research objectives, core techniques,
+              experimental results, limitations, and personal insights.
             </p>
           </article>
         </div>
@@ -747,18 +716,19 @@
       <div class="container">
         <div class="section-heading">
           <span class="section-label">Category 06</span>
-          <h2>공모전 / 자격증</h2>
+          <h2>Competitions / Certifications</h2>
           <p class="section-description">
-            참여한 활동과 실제로 취득한 자격을 기록합니다.
+            Tracking milestones, experiences, and achievements.
           </p>
         </div>
+
         <div class="entry-list">
           <article class="entry">
-            <span class="entry-meta">ACHIEVEMENTS</span>
-            <h3>활동 기록</h3>
+            <span class="entry-meta">MILESTONES</span>
+            <h3>Activities & Achievements</h3>
             <p>
-              공모전 참가, 수상 내역, 자격증 취득 정보와
-              활동을 통해 배운 점을 정리해 보세요.
+              Record competition participation, awards,
+              certifications earned, and lessons from each experience.
             </p>
           </article>
         </div>
@@ -769,11 +739,11 @@
     <section id="contact">
       <div class="container">
         <div class="contact-card">
-          <span class="section-label">Get in Touch</span>
-          <h2>Let's Keep Learning.</h2>
+          <span class="section-label">THE JOURNEY CONTINUES</span>
+          <h2>Learn. Grow. Protect.</h2>
           <p>
-            학습 기록과 프로젝트를 통해 계속 성장해 나갑니다.
-            코드와 기술 문서는 GitHub에서 확인할 수 있습니다.
+            Every step counts toward building a safer digital world.
+            This is my journey, documented with sincerity and purpose.
           </p>
           <a class="button"
              href="https://github.com/"
@@ -788,12 +758,15 @@
 
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> Security Log · Learn, Analyze, Document.</p>
+      <p>
+        © <span id="year"></span> 413.Log · SABI's Growth Journal
+      </p>
+      <p>Learn with purpose. Analyze with care. Grow with sincerity.</p>
     </div>
   </footer>
 
   <script>
-    // Automatically update the year
+    // Automatically update the copyright year
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
@@ -803,19 +776,20 @@
 
     menuToggle.addEventListener("click", () => {
       const isOpen = navLinks.classList.toggle("open");
+
       menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute(
         "aria-label",
-        isOpen ? "메뉴 닫기" : "메뉴 열기"
+        isOpen ? "Close menu" : "Open menu"
       );
     });
 
-    // Close the mobile menu after selecting a section
+    // Close the menu after selecting a section
     navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("open");
         menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "메뉴 열기");
+        menuToggle.setAttribute("aria-label", "Open menu");
       });
     });
   </script>
