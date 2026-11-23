@@ -18,11 +18,63 @@
     <h1>논문/컨퍼런스</h1>
     <p class="lead">읽은 논문 리뷰와 컨퍼런스 참가 기록</p>
 
-    <!-- 글이 생기면 아래 <li> 형식으로 추가하세요 -->
-    <ul class="post-list">
-      <li class="empty">아직 작성된 글이 없습니다.</li>
-      <!-- <li><a href="글-주소.html"><time>2026.11.23</time><span>글 제목</span></a></li> -->
-    </ul>
+    <nav class="tabs">
+      <a href="#papers">논문</a>
+      <a href="#conferences">컨퍼런스</a>
+    </nav>
+
+    <!-- ===== 논문 목록 ===== -->
+    <section class="list-block" id="papers">
+      <div class="list-head">
+        <h2>논문</h2>
+        <span>2편</span>
+      </div>
+
+      <!--
+        새 논문 추가 방법
+        1) paper-01.html을 복사해서 paper-03.html 같은 새 파일을 만들고 내용을 채웁니다.
+        2) 아래 <li> ... </li> 덩어리 하나를 복사해 맨 위에 붙이고,
+           href, 연도, 제목, 학회, 요약, 태그를 바꿉니다.
+        3) 위의 "2편" 숫자도 바꿔 주세요.
+      -->
+      <ul class="paper-list">
+        <li>
+          <a href="paper-02.html">
+            <span class="year">2026</span>
+            <div>
+              <h3>논문 제목을 입력하세요 (두 번째 예시)</h3>
+              <p class="venue">학회/저널 이름 · 저자</p>
+              <p class="summary">이 논문을 한두 문장으로 요약해 주세요.</p>
+              <span class="tag">Web</span><span class="tag">Fuzzing</span>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="paper-01.html">
+            <span class="year">2025</span>
+            <div>
+              <h3>논문 제목을 입력하세요 (첫 번째 예시)</h3>
+              <p class="venue">학회/저널 이름 · 저자</p>
+              <p class="summary">이 논문을 한두 문장으로 요약해 주세요.</p>
+              <span class="tag">System</span><span class="tag">Memory Safety</span>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== 컨퍼런스 목록 (나중에 채우기) ===== -->
+    <section class="list-block" id="conferences">
+      <div class="list-head">
+        <h2>컨퍼런스</h2>
+        <span>0건</span>
+      </div>
+      <ul class="post-list">
+        <li class="empty">아직 작성된 컨퍼런스 기록이 없습니다.</li>
+      </ul>
+    </section>
   </main>
 
   <footer class="footer">© 2026 413.log · SABI’s Journal</footer>
