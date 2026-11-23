@@ -149,6 +149,54 @@ a { color: inherit; }
 .post-list time { font-size: 14px; }
 .post-list .empty { padding: 32px 4px; color: #555; }
 
+/* ===== 논문 목록 ===== */
+.tabs { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+.tabs a { border: 1px solid #000; padding: 6px 16px; text-decoration: none; font-weight: 700; }
+.tabs a:hover { background: #000; color: #fff; }
+.list-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 12px; }
+.list-head h2 { font-size: 28px; }
+.list-head span { font-size: 14px; }
+.list-block { margin-bottom: 72px; scroll-margin-top: 80px; }
+.paper-list { list-style: none; border-top: 2px solid #000; }
+.paper-list li { border-bottom: 1px solid #000; }
+.paper-list a {
+  display: grid; grid-template-columns: 72px 1fr 24px; gap: 20px; align-items: start;
+  padding: 24px 8px; text-decoration: none; transition: background .2s, color .2s;
+}
+.paper-list a:hover { background: #000; color: #fff; }
+.paper-list a:hover .tag { border-color: #fff; }
+.paper-list .year { font-family: "Archivo Black", "Arial Black", sans-serif; font-size: 18px; }
+.paper-list h3 { font-size: 20px; line-height: 1.35; margin-bottom: 4px; word-break: keep-all; }
+.paper-list .venue { font-size: 14px; margin-bottom: 8px; }
+.paper-list .summary { font-size: 15px; margin-bottom: 10px; }
+.paper-list .arrow { font-size: 20px; }
+.tag { display: inline-block; border: 1px solid #000; padding: 0 8px; font-size: 12px; margin: 0 4px 4px 0; }
+
+/* ===== 논문 상세 ===== */
+.back { display: inline-block; margin-bottom: 32px; text-decoration: none; font-weight: 700; }
+.back:hover { text-decoration: underline; }
+.meta { width: 100%; border-collapse: collapse; margin: 24px 0 16px; border-top: 2px solid #000; }
+.meta th, .meta td { text-align: left; padding: 12px 8px; border-bottom: 1px solid #000; vertical-align: top; }
+.meta th { width: 120px; font-size: 13px; letter-spacing: .1em; }
+.meta a { font-weight: 700; }
+.article { margin-top: 56px; }
+.article h2 { font-size: 22px; margin: 48px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #000; }
+.article p, .article li { font-size: 16.5px; line-height: 1.85; }
+.article ul, .article ol { padding-left: 22px; }
+.article li { margin: 4px 0; }
+.article blockquote { border-left: 4px solid #000; padding: 8px 16px; margin: 16px 0; background: #f4f4f4; }
+.article pre { background: #111; color: #eee; padding: 16px; overflow-x: auto; font-size: 14px; margin: 16px 0; }
+.article figure { margin: 24px 0; }
+.article figure img { max-width: 100%; border: 1px solid #000; }
+.article figcaption { font-size: 13px; margin-top: 6px; }
+.tldr { border: 2px solid #000; padding: 20px; margin-top: 32px; }
+.tldr strong { display: block; font-size: 13px; letter-spacing: .15em; margin-bottom: 6px; }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 80px; border-top: 2px solid #000; padding-top: 16px; }
+.pager a { text-decoration: none; padding: 12px; border: 1px solid #000; }
+.pager a:hover { background: #000; color: #fff; }
+.pager .next { text-align: right; grid-column: 2; }
+.pager small { display: block; font-size: 12px; letter-spacing: .1em; }
+
 /* ===== 모바일 ===== */
 @media (max-width: 700px) {
   .topbar { height: 56px; padding: 0 16px; }
@@ -158,4 +206,9 @@ a { color: inherit; }
   .section, .page-wrap { padding-left: 16px; padding-right: 16px; }
   .contact-list a { flex-direction: column; gap: 2px; }
   .post-list a { grid-template-columns: 1fr; gap: 2px; }
+  .paper-list a { grid-template-columns: 1fr; gap: 4px; padding: 20px 4px; }
+  .paper-list .arrow { display: none; }
+  .meta th { width: 84px; }
+  .pager { grid-template-columns: 1fr; }
+  .pager .next { grid-column: 1; }
 }
