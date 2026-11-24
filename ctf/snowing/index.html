@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>snowing! — 413.log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/logo.png" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body>
+  <script src="../../assets/menu.js" data-root="../../"></script>
+
+  <main class="page-wrap">
+    <a class="back" href="../#wargame">← CTF/Wargame 목록으로</a>
+
+    <p class="eyebrow display">WARGAME · DREAMHACK</p>
+    <h1>snowing!</h1>
+    <span class="tag">Forensics</span><span class="tag">Steganography</span>
+
+    <!-- ===== 문제 기본 정보 ===== -->
+    <table class="meta">
+      <tr><th>플랫폼</th><td>Dreamhack</td></tr>
+      <tr><th>문제 링크</th><td><a href="https://dreamhack.io/wargame/challenges/241" target="_blank" rel="noopener">dreamhack.io/wargame/challenges/241</a></td></tr>
+      <tr><th>주제</th><td>포렌식</td></tr>
+      <tr><th>사용 도구</th><td>HxD, SNOW (snow.exe)</td></tr>
+    </table>
+
+    <!-- ===== 본문 =====
+      이미지는 이 폴더(ctf/snowing)에 아래 이름으로 올리면 됩니다.
+      snow0.png, snow1.png, snow2-1.png, snow2-2.png, snow3.png, snow4.png
+      필요 없는 이미지는 <figure> ... </figure> 덩어리째 지워 주세요.
+    -->
+    <article class="article">
+      <h2>0. 문제 설명</h2>
+      <figure>
+        <img src="snow0.png" alt="문제 설명" />
+      </figure>
+
+      <h2>1. 파일 확인</h2>
+      <figure>
+        <img src="snow1.png" alt="파일 확인" />
+      </figure>
+      <p>문제 파일에는 <b>이미지 파일</b>과 <b>텍스트 파일</b>이 존재했고, <code>flag.txt</code> 파일 내에는 <b>fake flag</b>가 존재했다.</p>
+
+      <h2>2. HxD</h2>
+      <p>두 파일을 <b>HxD</b>로 열어 내용을 확인한다.</p>
+
+      <h3>2-1. 이미지 파일</h3>
+      <figure>
+        <img src="snow2-1.png" alt="HxD로 이미지 파일 확인" />
+      </figure>
+
+      <h3>2-2. 텍스트 파일</h3>
+      <figure>
+        <img src="snow2-2.png" alt="HxD로 텍스트 파일 확인" />
+      </figure>
+      <p>텍스트 파일에서 <b>일반적이지 않은 패턴</b>이 눈에 띈다.</p>
+      <p>평문이 있고, 그 뒤에 아래 세 가지 문자<b>만</b> 길게 이어지는 패턴이다.</p>
+      <table class="meta">
+        <tr><th>0x20</th><td>스페이스</td></tr>
+        <tr><th>0x09</th><td>탭</td></tr>
+        <tr><th>0x0A</th><td>줄바꿈</td></tr>
+      </table>
+      <div class="tldr">
+        <strong>의심 기법</strong>
+        SNOW (공백 스테가노그래피)
+      </div>
+
+      <h2>3. snow</h2>
+      <p>SNOW 도구로 <code>flag.txt</code>에 숨겨진 데이터를 꺼낸다.</p>
+      <pre style="font-family: Consolas, 'Courier New', monospace;">.\snow.exe -C .\flag.txt</pre>
+      <table class="meta">
+        <tr><th><code>-C</code></th><td>압축된 데이터까지 풀어서 출력</td></tr>
+      </table>
+      <figure>
+        <img src="snow3.png" alt="snow 실행 결과" />
+      </figure>
+
+      <h2>4. 결과</h2>
+      <p>플래그 찾기 완료</p>
+      <figure>
+        <img src="snow4.png" alt="결과" />
+      </figure>
+    </article>
+  </main>
+
+  <footer class="footer">© 413.log</footer>
+  <script src="../../assets/toc.js"></script>
+</body>
+</html>
