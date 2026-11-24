@@ -181,6 +181,12 @@ a { color: inherit; }
 .meta a { font-weight: 700; }
 .article { margin-top: 56px; }
 .article h2 { font-size: 22px; margin: 48px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #000; }
+.article h3 { font-size: 19px; margin: 40px 0 12px; padding-left: 10px; border-left: 4px solid #000; }
+.article h4 { font-size: 16.5px; margin: 28px 0 8px; }
+.article p { margin: 10px 0; }
+.article code { background: #f0f0f0; padding: 1px 5px; font-size: .92em; }
+.article .meta { margin: 12px 0 16px; }
+.article .tldr { margin: 16px 0; }
 .article p, .article li { font-size: 16.5px; line-height: 1.85; }
 .article ul, .article ol { padding-left: 22px; }
 .article li { margin: 4px 0; }
