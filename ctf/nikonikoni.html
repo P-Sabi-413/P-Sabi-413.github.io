@@ -31,16 +31,25 @@
     <!-- ===== 본문 ===== -->
     <article class="article">
       <h2>0. 문제 설명</h2>
-      <p>문제 설명을 여기에 적어 주세요.</p>
+       <figure>
+        <img src="image-nikonikoni0.png" alt="문제 설명" />
+
+      </figure>
+    
 
       <h2>1. 필요한 파일 추출</h2>
-      <p><b>FTK Imager</b>로 이벤트 로그가 있는 <code>C:\Windows\System32\winevt\Logs\</code> 파일을 추출한다.</p>
-            <figure>
+       <figure>
         <img src="image-nikonikoni1.png" alt="FTK Imager로 이벤트 로그 추출" />
 
       </figure>
+      <p><b>FTK Imager</b>로 이벤트 로그가 있는 <code>C:\Windows\System32\winevt\Logs\</code> 파일을 추출한다.</p>
+           
 
       <h2>2. 로그 파싱</h2>
+       <figure>
+        <img src="image-nikonikoni2.png" alt="로그 파싱" />
+
+      </figure>
       <p>아래 총 4개의 로그를 파싱하여 파일로 저장한다.</p>
       <ul>
         <li><code>PowerShell.evtx</code></li>
@@ -52,6 +61,14 @@
       <h2>3. 파일 내용 분석 &amp; 악성 스크립트 실행 시간</h2>
 
       <h3>3-1. Defender%4Operational.evtx</h3>
+       <figure>
+        <img src="image-nikonikoni3-1.png" alt="파일내용분석" />
+
+      </figure>
+       <figure>
+        <img src="image-nikonikoni3-2.png" alt="파일내용분석" />
+
+      </figure>
       <table class="meta">
         <tr>
           <th>1116</th>
@@ -73,6 +90,10 @@
       </table>
 
       <h3>3-2. PowerShell.evtx</h3>
+       <figure>
+        <img src="image-nikonikoni3-3.png" alt="파일내용분석" />
+
+      </figure>
       <p><b>HostApplication</b> 값에서 다음 두 가지를 확인할 수 있다.</p>
       <ul>
         <li><code>-exec bypass</code> — 실행 정책 우회</li>
@@ -88,8 +109,13 @@
       </table>
 
       <h2>4. 배경화면 이미지 파일</h2>
+    
 
       <h3>4-1. FTK Imager</h3>
+       <figure>
+        <img src="image-nikonikoni4-1.png" alt="ftk Imager" />
+
+      </figure>
       <p><code>AppData\Roaming\Microsoft\Windows\Themes</code> 경로를 통해 배경화면이 애니메이션 캐릭터 이미지임을 확인한다.</p>
       <ul>
         <li><code>TranscodedWallpaper</code> — 윈도우가 만드는 고정 이름이라 원래 파일 이름은 알 수 없다.</li>
@@ -97,6 +123,10 @@
       </ul>
 
       <h3>4-2. regedit</h3>
+       <figure>
+        <img src="image-nikonikoni4-2.png" alt="regedit" />
+
+      </figure>
       <p>추출한 <code>NTUSER.DAT</code>를 <b>하이브 로드</b>(키 이름 <code>victim</code>)로 열고, <code>HKU\victim\Control Panel\Desktop</code>을 확인한다.</p>
       <div class="tldr">
         <strong>이미지 이름</strong>
@@ -104,6 +134,10 @@
       </div>
 
       <h2>5. 배경화면을 바꾸는 프로그램</h2>
+       <figure>
+        <img src="image-nikonikoni5.png" alt="FTK Imager" />
+
+      </figure>
       <p><b>FTK Imager</b>로 <code>Windows\Prefetch</code>를 확인하면, IEX 실행(15:26:45) 직후에 처음 보이는 <b>윈도우 기본 프로그램이 아닌 이름</b>을 발견할 수 있다.</p>
       <div class="tldr">
         <strong>의심 파일</strong>
@@ -122,11 +156,14 @@
       </table>
 
       <h2>6. 결과</h2>
-      <p>결과를 여기에 적어 주세요.</p>
+       <figure>
+        <img src="image-nikonikoni6.png" alt="flag 입력" />
+
+      </figure>
     </article>
   </main>
 
-  <footer class="footer">© 2026 413.log · SABI’s Journal</footer>
+  <footer class="footer">© 413.log</footer>
   <script src="../assets/toc.js"></script>
 </body>
 </html>
