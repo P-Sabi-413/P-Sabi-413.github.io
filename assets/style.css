@@ -184,7 +184,7 @@ a { color: inherit; }
 .article h3 { font-size: 19px; margin: 40px 0 12px; padding-left: 10px; border-left: 4px solid #000; }
 .article h4 { font-size: 16.5px; margin: 28px 0 8px; }
 .article p { margin: 10px 0; }
-.article code { background: #f0f0f0; padding: 1px 5px; font-size: .92em; }
+.article code { background: #f0f0f0; padding: 1px 5px; font-size: .92em; font-family: Consolas, "Cascadia Mono", Menlo, "Courier New", monospace; word-break: break-all; }
 .article .meta { margin: 12px 0 16px; }
 .article .tldr { margin: 16px 0; }
 .article p, .article li { font-size: 16.5px; line-height: 1.85; }
