@@ -69,23 +69,53 @@ Standards</h1>
       
       
 
-      <h2>2. 제안 방법</h2>
-      <p>논문이 제안하는 핵심 아이디어나 시스템 구조를 설명해 주세요.</p>
-      <ul>
-        <li>핵심 아이디어 1</li>
-        <li>핵심 아이디어 2</li>
-      </ul>
+      <h2>2. Audience Injection Attack</h2>
+      <p>Audience Injection Attack은 OAuth 2.0과 OpenID Connect(OIDC)를 비롯한 다양한 OMAA 프로토콜 패밀리와 관련 확장 기능에 영향을 미친다. 
+        이 절에서는 논문이 주요 사례로 제시한 OIDC 인증 흐름을 중심으로 공격이 어떻게 발생하는지 살펴본다.</p>
+      <p>논문에서는 기존 OIDC의 Authorization Code Flow를 기반으로 OpenID Connect Discovery와 Pushed Authorization Requests(PAR)를 
+        함께 사용하는 구성을 예시로 들어 Audience Injection Attack의 발생 과정을 설명한다.</p>
+
+       <h3>2-1. 프로토콜</h3>
+      <p>논문에서는 기존 OIDC의 Authorization Code Flow를 기반으로 OpenID Connect Discovery와 Pushed Authorization Requests(PAR)를
+        함께 사용하는 구성을 예시로 들어 Audience Injection Attack의 발생 과정을 설명한다.</p>
+            <br><br>
+      <p>먼저 이 프로토콜 조합의 작동 방식은 큰 틀에서 다음과 같다.</p>
+
+      
       <!-- 그림을 넣고 싶으면: 이미지를 paper 폴더에 Upload files로 올린 뒤 아래 주석을 풀어 주세요
       <figure>
         <img src="paper-01-fig1.png" alt="시스템 구조도" />
         <figcaption>Figure 1. 시스템 구조</figcaption>
       </figure>
       -->
+       <h3>2-2. 클라이언트 인증 방식 </h3>
+      <p>이러한 프로토콜이 정상적으로 작동하려면 클라이언트 인증 방식이 사용되어야 한다. 클라이언트 인증 방식 중 서명 기반 방식에는 Private Key JWT, JWT Bearer Token Authentication, (OAuth 2.0 클라이언트 인증용) 
+        SAML Bearer Assertion 방식이 있으며, 적어도 이 논문의 논의에 관한 한 모두 비슷하게 동작한다. </p>
+      <br><br>
+      <p>논문에서는 이 중 Private Key JWT(pkJWT)를 기준으로 클라이언트 인증 과정을 설명한다.
+C(Client)는 키 쌍 (k_c, k̂_c) 을 생성하고, 공개키 k_c를 AS(Authorization Server)에 등록한다. 이후 C가 AS에 인증해야 할 때마다 개인키 k̂_c로 서명한 JWT를 생성하여 [client_assertion] 파라미터에 넣는다. JWT에는 다음과 같은 주요 클레임(Claim)이 포함된다. 
+</p>
+      <br><br>
+      <ul>
+    <li><strong>iss:</strong> JWT를 발행한 주체를 나타내며, 클라이언트 ID가 들어간다.</li>
 
-      <h2>3. 실험 및 결과</h2>
+    <li><strong>sub:</strong> JWT가 누구를 주체로 하는지 나타내며, 클라이언트 ID가 들어간다.</li>
+
+    <li><strong>aud:</strong> JWT가 대상으로 하는 수신자를 나타내며, 일반적으로 AS의 토큰 엔드포인트 URL이 사용된다.</li>
+</ul>
+      <ul>
+    <li><strong>jti:</strong> JWT를 고유하게 식별하는 값으로, 재사용이나 재전송을 탐지하는 데 활용할 수 있다.
+</li>
+        <ul>
+    <li><strong>exp:</strong> JWT의 만료 시각을 나타낸다.
+</li>
+          <p>AS는 이런 JWT를 받으면 C가 등록한 k_c로 서명을 검증한다. 
+            이를 통해 JWT가 해당 클라이언트의 개인키로 서명되었는지 확인하고 클라이언트의 신원을 검증한다.</p>
+
+      <h2>3. 공격 완화를 위한 접근법</h2>
       <p>어떤 환경에서 무엇을 실험했고, 결과가 어땠는지 정리해 주세요.</p>
 
-      <h2>4. 한계점</h2>
+      <h2>4. 연구 이후의 결과 및 후속 조치</h2>
       <p>논문에서 밝힌 한계나, 읽으면서 느낀 아쉬운 점을 적어 주세요.</p>
 
       <h2>5. 내 생각 · 배운 점</h2>
