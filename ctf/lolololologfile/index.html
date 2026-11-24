@@ -31,9 +31,20 @@
     <!-- ===== 본문 ===== -->
     <article class="article">
       <h2>0. 문제 설명</h2>
-      <p>문제 설명을 여기에 적어 주세요.</p>
+            <figure>
+        <img src="log0.png" alt="문제 설명" />
+       
+      </figure>
 
       <h2>1. 이미지 파일 분석</h2>
+           <figure>
+        <img src="log1-1.png" alt="이미지 파일 분석" />
+       
+      </figure>
+           <figure>
+        <img src="log1-2.png" alt="이미지 파일 분석" />
+       
+      </figure>
       <p><b>FTK Imager</b>로 이미지 파일을 열면 <code>[root]</code> 영역에서 <b>삭제된 파일</b>을 발견할 수 있다.</p>
       <!-- 스크린샷을 넣고 싶으면: 이미지를 이 폴더(ctf/lolololologfile)에 Upload files로 1.png 이름으로 올린 뒤 아래 주석을 풀어 주세요
       <figure>
@@ -48,6 +59,10 @@
       </ul>
 
       <h3>1-2. 파일 추출</h3>
+      <figure>
+        <img src="log1-3.png" alt=" 파일 추출" />
+       
+      </figure>
       <ol>
         <li>unallocated space에서 <b>삭제된 파일들과 동일한 크기를 갖는 파일</b>이 존재하는 것을 확인한다.</li>
         <li>해당 파일들을 <b>export</b>한다.</li>
@@ -55,6 +70,10 @@
 
       <h2>2. 로그 파일 분석</h2>
       <p>추출한 파일을 <b>HxD</b>로 열어 내용을 확인한다.</p>
+      <figure>
+        <img src="log2.png" alt="로그 파일 분석" />
+       
+      </figure>
       <table class="meta">
         <tr><th>02067 (seg1)</th><td><b>PDF 파일 시그니처</b> 발견</td></tr>
       </table>
@@ -66,14 +85,22 @@
       -->
 
       <h2>3. FLAG</h2>
+      <figure>
+        <img src="log3-1.png" alt="flag" />
+       
+      </figure>
       <p>도구의 <b>파일 연결 기능</b>을 사용해 파일을 하나로 합친다.</p>
 
       <h2>4. 결과</h2>
-      <p>결과를 여기에 적어 주세요.</p>
+      
+      <figure>
+        <img src="log3-2.png" alt="결과" />
+       
+      </figure>
     </article>
   </main>
 
-  <footer class="footer">© 2026 413.log · SABI’s Journal</footer>
+  <footer class="footer">© 413.log</footer>
   <script src="../../assets/toc.js"></script>
 </body>
 </html>
