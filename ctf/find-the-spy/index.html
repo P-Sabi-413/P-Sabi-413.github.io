@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTF/Wargame — 413.log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <script src="../assets/menu.js" data-root="../"></script>
+
+  <main class="page-wrap">
+    <p class="eyebrow display">CTF / WARGAME</p>
+    <h1>CTF/Wargame</h1>
+    <p class="lead">CTF 대회 풀이와 워게임 write-up</p>
+
+    <nav class="tabs">
+      <a href="#wargame">Wargame</a>
+      <a href="#ctf">CTF</a>
+    </nav>
+
+    <!-- ===== 워게임 목록 ===== -->
+    <section class="list-block" id="wargame">
+      <div class="list-head">
+        <h2>Wargame</h2>
+        <span>4문제</span>
+      </div>
+
+      <!--
+        새 라이트업 추가 방법
+        1) snowing 폴더를 통째로 복사해서 폴더 이름을 문제 이름으로 바꾸고, 안의 index.html 내용을 채웁니다.
+        2) 아래 <li> ... </li> 덩어리 하나를 복사해 맨 위에 붙이고,
+           href(폴더이름/), 제목, 분야, 태그를 바꿉니다.
+        3) 위의 "4문제" 숫자도 바꿔 주세요.
+        * 처음에 보이는 개수는 아래 data-limit="2" 숫자로 바꿀 수 있어요.
+      -->
+      <ul class="paper-list" data-limit="2">
+        <li>
+          <a href="find-the-spy/">
+            <span class="year">DH</span>
+            <div>
+              <h3>find-the-spy</h3>
+              <p class="venue">Dreamhack Wargame · 메모리 포렌식</p>
+              <span class="tag">Forensics</span><span class="tag">Memory</span>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="snowing/">
+            <span class="year">DH</span>
+            <div>
+              <h3>snowing!</h3>
+              <p class="venue">Dreamhack Wargame · 포렌식</p>
+              <span class="tag">Forensics</span><span class="tag">Steganography</span>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="lolololologfile/">
+            <span class="year">DH</span>
+            <div>
+              <h3>lolololologfile</h3>
+              <p class="venue">Dreamhack Wargame · 디스크 포렌식</p>
+     
+              <span class="tag">Forensics</span><span class="tag">Disk Image</span>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="nikonikoni.html">
+            <span class="year">DH</span>
+            <div>
+              <h3>nikonikoni</h3>
+              <p class="venue">Dreamhack Wargame · 윈도우 포렌식</p>
+             
+              <span class="tag">Forensics</span><span class="tag">Windows</span>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== CTF 목록 (나중에 채우기) ===== -->
+    <section class="list-block" id="ctf">
+      <div class="list-head">
+        <h2>CTF</h2>
+        <span>0건</span>
+      </div>
+      <ul class="post-list">
+        <li class="empty">아직 작성된 CTF 풀이가 없습니다.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 413.log · SABI’s Journal</footer>
+  <script src="../assets/more.js"></script>
+</body>
+</html>
