@@ -3,104 +3,166 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CTF/Wargame — 413.log</title>
+  <title>find-the-spy — 413.log</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
-  <link rel="icon" href="../assets/logo.png" />
-  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="icon" href="../../assets/logo.png" />
+  <link rel="stylesheet" href="../../assets/style.css" />
 </head>
 <body>
-  <script src="../assets/menu.js" data-root="../"></script>
+  <script src="../../assets/menu.js" data-root="../../"></script>
 
   <main class="page-wrap">
-    <p class="eyebrow display">CTF / WARGAME</p>
-    <h1>CTF/Wargame</h1>
-    <p class="lead">CTF 대회 풀이와 워게임 write-up</p>
+    <a class="back" href="../#wargame">← CTF/Wargame 목록으로</a>
 
-    <nav class="tabs">
-      <a href="#wargame">Wargame</a>
-      <a href="#ctf">CTF</a>
-    </nav>
+    <p class="eyebrow display">WARGAME · DREAMHACK</p>
+    <h1>find-the-spy</h1>
+    <span class="tag">Forensics</span><span class="tag">Memory</span><span class="tag">ZIP</span>
 
-    <!-- ===== 워게임 목록 ===== -->
-    <section class="list-block" id="wargame">
-      <div class="list-head">
-        <h2>Wargame</h2>
-        <span>4문제</span>
+    <!-- ===== 문제 기본 정보 ===== -->
+    <table class="meta">
+      <tr><th>플랫폼</th><td>Dreamhack</td></tr>
+      <!-- 문제 링크: href="#" 자리에 문제 페이지 주소를 넣어 주세요 -->
+      <tr><th>문제 링크</th><td><a href="#" target="_blank" rel="noopener">find-the-spy | 워게임 | Dreamhack</a></td></tr>
+      <tr><th>주제</th><td>메모리 포렌식</td></tr>
+      <tr><th>사용 도구</th><td>notepad++, 반디집, HxD</td></tr>
+    </table>
+
+    <!-- ===== 본문 =====
+      이미지는 이 폴더(ctf/find-the-spy)에 아래 이름으로 올리면 됩니다.
+      spy0.png, spy1.png,
+      spy2-1.png ~ spy2-6.png,
+      spy3-1.png ~ spy3-8.png
+      필요 없는 이미지는 <figure> ... </figure> 덩어리째 지워 주세요.
+    -->
+    <article class="article">
+      <h2>0. 문제 설명</h2>
+      <figure>
+        <img src="spy0.png" alt="문제 설명" />
+      </figure>
+
+      <!-- ===== 1 ===== -->
+      <h2>1. 문제 분석</h2>
+      <figure>
+        <img src="spy1.png" alt="문제에서 제공한 두 개의 파일" />
+      </figure>
+      <p>문제에서 제공한 두 개의 파일이다.</p>
+
+      <h3>1-1. 파일 종류</h3>
+      <table class="meta">
+        <tr><th></th><td><b>.vmem</b></td><td><b>.vmsn</b></td></tr>
+        <tr><th>저장 내용</th><td>메인 메모리(RAM) 내용 저장</td><td>스냅샷 상태 저장</td></tr>
+        <tr><th>역할</th><td>주요 분석 대상</td><td>메타데이터</td></tr>
+      </table>
+      <p><code>.vmem</code>과 <code>.vmsn</code>을 같은 폴더에 두고, <code>.vmem</code> 속에서 필요한 정보들을 찾기로 하자.</p>
+
+      <!-- ===== 2 ===== -->
+      <h2>2. 압축 파일 찾기</h2>
+
+      <h3>2-1. OS 프로파일</h3>
+      <figure>
+        <img src="spy2-1.png" alt="OS 프로파일" />
+      </figure>
+
+      <h3>2-2. 프로세스 관련 정보</h3>
+      <figure>
+        <img src="spy2-2.png" alt="프로세스 관련 정보 1" />
+      </figure>
+      <figure>
+        <img src="spy2-3.png" alt="프로세스 관련 정보 2" />
+      </figure>
+
+      <h3>2-3. pslist</h3>
+      <figure>
+        <img src="spy2-4.png" alt="pslist 결과" />
+      </figure>
+      <div class="tldr">
+        <strong>발견</strong>
+        <code>Bandizip.exe</code> (압축 프로그램)
       </div>
 
-      <!--
-        새 라이트업 추가 방법
-        1) snowing 폴더를 통째로 복사해서 폴더 이름을 문제 이름으로 바꾸고, 안의 index.html 내용을 채웁니다.
-        2) 아래 <li> ... </li> 덩어리 하나를 복사해 맨 위에 붙이고,
-           href(폴더이름/), 제목, 분야, 태그를 바꿉니다.
-        3) 위의 "4문제" 숫자도 바꿔 주세요.
-        * 처음에 보이는 개수는 아래 data-limit="2" 숫자로 바꿀 수 있어요.
-      -->
-      <ul class="paper-list" data-limit="2">
-        <li>
-          <a href="find-the-spy/">
-            <span class="year">DH</span>
-            <div>
-              <h3>find-the-spy</h3>
-              <p class="venue">Dreamhack Wargame · 메모리 포렌식</p>
-              <span class="tag">Forensics</span><span class="tag">Memory</span>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-        </li>
-        <li>
-          <a href="snowing/">
-            <span class="year">DH</span>
-            <div>
-              <h3>snowing!</h3>
-              <p class="venue">Dreamhack Wargame · 포렌식</p>
-              <span class="tag">Forensics</span><span class="tag">Steganography</span>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-        </li>
-        <li>
-          <a href="lolololologfile/">
-            <span class="year">DH</span>
-            <div>
-              <h3>lolololologfile</h3>
-              <p class="venue">Dreamhack Wargame · 디스크 포렌식</p>
-     
-              <span class="tag">Forensics</span><span class="tag">Disk Image</span>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-        </li>
-        <li>
-          <a href="nikonikoni.html">
-            <span class="year">DH</span>
-            <div>
-              <h3>nikonikoni</h3>
-              <p class="venue">Dreamhack Wargame · 윈도우 포렌식</p>
-             
-              <span class="tag">Forensics</span><span class="tag">Windows</span>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-        </li>
+      <h3>2-4. pstree</h3>
+      <figure>
+        <img src="spy2-5.png" alt="pstree 결과" />
+      </figure>
+      <ul>
+        <li>압축 프로그램을 실행시킨 부모 프로그램이 <code>explorer.exe</code>임을 확인</li>
+        <li>‘사용자가 탐색기에서 직접 실행했다’는 의미</li>
       </ul>
-    </section>
 
-    <!-- ===== CTF 목록 (나중에 채우기) ===== -->
-    <section class="list-block" id="ctf">
-      <div class="list-head">
-        <h2>CTF</h2>
-        <span>0건</span>
-      </div>
-      <ul class="post-list">
-        <li class="empty">아직 작성된 CTF 풀이가 없습니다.</li>
+      <h3>2-5. cmdline</h3>
+      <figure>
+        <img src="spy2-6.png" alt="cmdline 결과" />
+      </figure>
+      <ul>
+        <li>압축 프로그램이 <code>reports.zip</code>을 실행</li>
       </ul>
-    </section>
+      <div class="tldr">
+        <strong>다음 단계</strong>
+        <code>reports.zip</code> 내용을 추출해 보자!
+      </div>
+
+      <!-- ===== 3 ===== -->
+      <h2>3. 파일 추출 및 확인</h2>
+
+      <h3>3-1. reports.zip 추출</h3>
+      <figure>
+        <img src="spy3-1.png" alt="reports.zip 추출 1" />
+      </figure>
+      <figure>
+        <img src="spy3-2.png" alt="reports.zip 추출 2" />
+      </figure>
+      <figure>
+        <img src="spy3-3.png" alt="reports.zip 추출 3" />
+      </figure>
+      <p>세 개의 파일이 나왔다.</p>
+
+      <h3>3-2. 반디집 프로그램</h3>
+      <figure>
+        <img src="spy3-4.png" alt="반디집으로 파일 확인" />
+      </figure>
+      <p>반디집으로 이전에 추출한 세 개의 파일 중 읽을 수 있는 파일을 열어 확인한 내용이다.</p>
+      <ul>
+        <li>모든 PDF 본문 내용은 확인했을 때 문제가 없었다.
+          <ul>
+            <li>→ 파일 <b>구조 자체</b>를 봐 보자!</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>3-3. HxD</h3>
+      <figure>
+        <img src="spy3-5.png" alt="HxD로 ZIP 구조 확인" />
+      </figure>
+
+      <h4>EOCD</h4>
+      <blockquote>ZIP 파일의 맨 끝에 있는 22바이트짜리 요약 정보</blockquote>
+      <table class="meta">
+        <tr><th>시그니처</th><td><code>50 4B 05 06</code></td></tr>
+        <tr><th>특징</th><td>zip 프로그램은 EOCD까지 읽는다. <b>그 뒤의 코드는 읽지 않는다.</b></td></tr>
+      </table>
+
+      <figure>
+        <img src="spy3-6.png" alt="EOCD 뒤에 남은 PNG 시그니처" />
+      </figure>
+      <p>남는 구조에서 <b>PNG 시그니처</b>를 발견했다. 해당 코드를 복사하여 PNG를 만든다.</p>
+
+      <h3>3-4. png</h3>
+      <figure>
+        <img src="spy3-7.png" alt="복원한 PNG" />
+      </figure>
+      <div class="tldr">
+        <strong>결과</strong>
+        확인 결과, 답에 해당하는 시간과 장소를 발견했다!
+      </div>
+      <figure>
+        <img src="spy3-8.png" alt="정답 확인" />
+      </figure>
+    </article>
   </main>
 
-  <footer class="footer">© 2026 413.log · SABI’s Journal</footer>
-  <script src="../assets/more.js"></script>
+  <footer class="footer">© 413.log</footer>
+  <script src="../../assets/toc.js"></script>
 </body>
 </html>
