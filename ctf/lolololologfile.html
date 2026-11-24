@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lolololologfile — 413.log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <script src="../assets/menu.js" data-root="../"></script>
+
+  <main class="page-wrap">
+    <a class="back" href="./#wargame">← CTF/Wargame 목록으로</a>
+
+    <p class="eyebrow display">WARGAME · DREAMHACK</p>
+    <h1>lolololologfile</h1>
+    <span class="tag">Forensics</span><span class="tag">Disk Image</span><span class="tag">Deleted File</span><span class="tag">File Signature</span>
+
+    <!-- ===== 문제 기본 정보 ===== -->
+    <table class="meta">
+      <tr><th>플랫폼</th><td>Dreamhack Wargame</td></tr>
+      <tr><th>문제 링크</th><td><a href="https://dreamhack.io/wargame/challenges/727" target="_blank" rel="noopener">dreamhack.io/wargame/challenges/727</a></td></tr>
+      <tr><th>주제</th><td>포렌식 (2022 Christmas CTF)</td></tr>
+      <tr><th>사용 도구</th><td>FTK Imager, HxD</td></tr>
+    </table>
+
+    <!-- ===== 본문 ===== -->
+    <article class="article">
+      <h2>0. 문제 설명</h2>
+      <p>문제 설명을 여기에 적어 주세요.</p>
+
+      <h2>1. 이미지 파일 분석</h2>
+      <p><b>FTK Imager</b>로 이미지 파일을 열면 <code>[root]</code> 영역에서 <b>삭제된 파일</b>을 발견할 수 있다.</p>
+      <!-- 스크린샷을 넣고 싶으면: 이미지를 ctf 폴더에 Upload files로 올린 뒤 아래 주석을 풀어 주세요
+      <figure>
+        <img src="lolololologfile-1.png" alt="FTK Imager에서 삭제된 파일 확인" />
+        <figcaption>FTK Imager에서 삭제된 파일 확인</figcaption>
+      </figure>
+      -->
+
+      <h3>1-1. unallocated space</h3>
+      <ul>
+        <li>삭제된 파일의 데이터가 남아 있을 수 있는 영역이다.</li>
+      </ul>
+
+      <h3>1-2. 파일 추출</h3>
+      <ol>
+        <li>unallocated space에서 <b>삭제된 파일들과 동일한 크기를 갖는 파일</b>이 존재하는 것을 확인한다.</li>
+        <li>해당 파일들을 <b>export</b>한다.</li>
+      </ol>
+
+      <h2>2. 로그 파일 분석</h2>
+      <p>추출한 파일을 <b>HxD</b>로 열어 내용을 확인한다.</p>
+      <table class="meta">
+        <tr><th>02067 (seg1)</th><td><b>PDF 파일 시그니처</b> 발견</td></tr>
+      </table>
+      <!-- 시그니처 부분 HxD 스크린샷을 넣으면 좋아요
+      <figure>
+        <img src="lolololologfile-2.png" alt="HxD에서 PDF 시그니처 확인" />
+        <figcaption>HxD에서 PDF 시그니처 확인</figcaption>
+      </figure>
+      -->
+
+      <h2>3. FLAG</h2>
+      <p>도구의 <b>파일 연결 기능</b>을 사용해 파일을 하나로 합친다.</p>
+
+      <h2>4. 결과</h2>
+      <p>결과를 여기에 적어 주세요.</p>
+    </article>
+  </main>
+
+  <footer class="footer">© 2026 413.log · SABI’s Journal</footer>
+  <script src="../assets/toc.js"></script>
+</body>
+</html>
