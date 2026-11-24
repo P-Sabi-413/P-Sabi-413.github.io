@@ -18,7 +18,7 @@
 
     <p class="eyebrow display">WARGAME · DREAMHACK</p>
     <h1>strange-program</h1>
-    <span class="tag">Forensics</span><span class="tag">Memory</span><span class="tag">Process</span>
+    <span class="tag">Forensics</span><span class="tag">Memory</span>
 
     <!-- ===== 문제 기본 정보 ===== -->
     <table class="meta">
@@ -69,12 +69,15 @@
       <figure>
         <img src="str2-3.png" alt="프로세스 관련 정보 2" />
       </figure>
+       <figure>
+        <img src="str2-4.png" alt="프로세스 관련 정보 3" />
+      </figure>
 
       <h3>2-3. notepad++</h3>
 
       <h4>의심 프로세스</h4>
       <figure>
-        <img src="str2-4.png" alt="의심 프로세스" />
+        <img src="str2-5.png" alt="의심 프로세스" />
       </figure>
       <div class="tldr">
         <strong>의심 프로세스</strong>
@@ -83,26 +86,24 @@
 
       <h4>부모 프로세스</h4>
       <figure>
-        <img src="str2-5.png" alt="부모 프로세스" />
+        <img src="str2-6.png" alt="부모 프로세스" />
       </figure>
       <p>부모 프로세스가 <code>explorer.exe</code>이다. 사용자가 직접 실행했다는 의미를 지닌다.</p>
 
       <h4>자식 프로세스</h4>
       <figure>
-        <img src="str2-6.png" alt="자식 프로세스" />
+        <img src="str2-7.png" alt="자식 프로세스" />
       </figure>
       <p><code>conhost.exe</code>는 콘솔 프로그램이다. 진짜 <code>explorer.exe</code>라면 바로 밑에 conhost를 만들지 않는다.</p>
 
       <h4>일반적인 경우</h4>
       <figure>
-        <img src="str2-7.png" alt="일반적인 경우" />
+        <img src="str2-8.png" alt="일반적인 경우" />
       </figure>
       <p>일반적인 경우는 이러한 형태를 띤다. 즉, <code>explor3r.exe</code>는 <b>콘솔 프로그램일 확률이 높아 보인다.</b></p>
 
       <h4>pstree, cmdline</h4>
-      <figure>
-        <img src="str2-8.png" alt="pstree, cmdline 결과" />
-      </figure>
+    
       <ul>
         <li><code>explor3r.exe</code>에 대한 정보를 발견하지 못했다. → <b><code>explor3r.exe</code>가 종료됐다는 근거</b>
           <ul>
