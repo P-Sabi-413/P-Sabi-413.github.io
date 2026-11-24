@@ -29,23 +29,23 @@
     </table>
 
     <!-- ===== 본문 =====
-      이미지는 이 폴더(ctf/strange-program)에 아래 이름으로 올리면 됩니다.
-      sp0.png, sp1.png,
-      sp2-1.png ~ sp2-8.png,
-      sp3-1.png ~ sp3-5.png,
-      sp4.png
+      이미지는 이 폴더(ctf/strange-file)에 아래 이름으로 올리면 됩니다.
+      str0.png, str1.png,
+      str2-1.png ~ str2-8.png,
+      str3-1.png ~ str3-6.png,
+      str4.png
       필요 없는 이미지는 <figure> ... </figure> 덩어리째 지워 주세요.
     -->
     <article class="article">
       <h2>0. 문제 설명</h2>
       <figure>
-        <img src="sp0.png" alt="문제 설명" />
+        <img src="str0.png" alt="문제 설명" />
       </figure>
 
       <!-- ===== 1 ===== -->
       <h2>1. 문제 분석</h2>
       <figure>
-        <img src="sp1.png" alt="문제에서 제공한 두 개의 파일" />
+        <img src="str1.png" alt="문제에서 제공한 두 개의 파일" />
       </figure>
       <p>문제에서 제공해 준 두 개의 파일이다.</p>
       <p>종료된 프로그램을 찾아야 하기 때문에, <code>pslist</code>가 아닌 <b><code>psscan</code></b>을 사용하기로 한다.</p>
@@ -59,22 +59,22 @@
 
       <h3>2-1. OS 프로파일</h3>
       <figure>
-        <img src="sp2-1.png" alt="OS 프로파일" />
+        <img src="str2-1.png" alt="OS 프로파일" />
       </figure>
 
       <h3>2-2. 프로세스 관련 정보</h3>
       <figure>
-        <img src="sp2-2.png" alt="프로세스 관련 정보 1" />
+        <img src="str2-2.png" alt="프로세스 관련 정보 1" />
       </figure>
       <figure>
-        <img src="sp2-3.png" alt="프로세스 관련 정보 2" />
+        <img src="str2-3.png" alt="프로세스 관련 정보 2" />
       </figure>
 
       <h3>2-3. notepad++</h3>
 
       <h4>의심 프로세스</h4>
       <figure>
-        <img src="sp2-4.png" alt="의심 프로세스" />
+        <img src="str2-4.png" alt="의심 프로세스" />
       </figure>
       <div class="tldr">
         <strong>의심 프로세스</strong>
@@ -83,25 +83,25 @@
 
       <h4>부모 프로세스</h4>
       <figure>
-        <img src="sp2-5.png" alt="부모 프로세스" />
+        <img src="str2-5.png" alt="부모 프로세스" />
       </figure>
       <p>부모 프로세스가 <code>explorer.exe</code>이다. 사용자가 직접 실행했다는 의미를 지닌다.</p>
 
       <h4>자식 프로세스</h4>
       <figure>
-        <img src="sp2-6.png" alt="자식 프로세스" />
+        <img src="str2-6.png" alt="자식 프로세스" />
       </figure>
       <p><code>conhost.exe</code>는 콘솔 프로그램이다. 진짜 <code>explorer.exe</code>라면 바로 밑에 conhost를 만들지 않는다.</p>
 
       <h4>일반적인 경우</h4>
       <figure>
-        <img src="sp2-7.png" alt="일반적인 경우" />
+        <img src="str2-7.png" alt="일반적인 경우" />
       </figure>
       <p>일반적인 경우는 이러한 형태를 띤다. 즉, <code>explor3r.exe</code>는 <b>콘솔 프로그램일 확률이 높아 보인다.</b></p>
 
       <h4>pstree, cmdline</h4>
       <figure>
-        <img src="sp2-8.png" alt="pstree, cmdline 결과" />
+        <img src="str2-8.png" alt="pstree, cmdline 결과" />
       </figure>
       <ul>
         <li><code>explor3r.exe</code>에 대한 정보를 발견하지 못했다. → <b><code>explor3r.exe</code>가 종료됐다는 근거</b>
@@ -118,15 +118,21 @@
 
       <h4>offset 찾기</h4>
       <figure>
-        <img src="sp3-1.png" alt="offset 찾기 1" />
+        <img src="str3-1.png" alt="offset 찾기 1" />
       </figure>
       <figure>
-        <img src="sp3-2.png" alt="offset 찾기 2" />
+        <img src="str3-2.png" alt="offset 찾기 2" />
       </figure>
+
+      <h4>파일 덤프</h4>
+      <figure>
+        <img src="str3-3.png" alt="explor3r.exe 파일 덤프" />
+      </figure>
+      <p>찾은 offset으로 <code>explor3r.exe</code> 파일을 덤프한다.</p>
 
       <h4>MD5 해시값</h4>
       <figure>
-        <img src="sp3-3.png" alt="MD5 해시값" />
+        <img src="str3-4.png" alt="MD5 해시값" />
       </figure>
       <table class="meta">
         <tr><th>MD5</th><td><code>EAF5D532A2C9CCB5C60D3D1741D32610</code></td></tr>
@@ -134,14 +140,14 @@
 
       <h3>3-2. 종료된 시각 찾기</h3>
       <figure>
-        <img src="sp3-4.png" alt="종료된 시각 찾기" />
+        <img src="str3-5.png" alt="종료된 시각 찾기" />
       </figure>
       <p><code>explor3r.exe</code>의 종료된 시각에 대한 정보는 나와 있지 않아, 의심 프로세스가 종료되면 뒤이어 종료될
         <code>conhost.exe</code>의 종료 시각을 알아보았다.</p>
 
       <h4>Unix Timestamp</h4>
       <figure>
-        <img src="sp3-5.png" alt="Unix Timestamp 변환" />
+        <img src="str3-6.png" alt="Unix Timestamp 변환" />
       </figure>
       <table class="meta">
         <tr><th>Unix Timestamp</th><td><code>1714230600</code></td></tr>
@@ -150,7 +156,7 @@
       <!-- ===== 4 ===== -->
       <h2>4. 플래그</h2>
       <figure>
-        <img src="sp4.png" alt="플래그" />
+        <img src="str4.png" alt="플래그" />
       </figure>
     </article>
   </main>
