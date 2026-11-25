@@ -247,3 +247,7 @@ a { color: inherit; }
   .pager { grid-template-columns: 1fr; }
   .pager .next { grid-column: 1; }
 }
+
+/* ===== 게시일 ===== */
+.post-date { font-size: 14px; color: #555; margin: 0 0 14px; }
+.post-date time { color: #000; font-weight: 700; margin-left: 4px; }
