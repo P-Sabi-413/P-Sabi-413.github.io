@@ -66,14 +66,33 @@
       </ul>
     </section>
 
-    <!-- ===== 기술문서 목록 (나중에 채우기) ===== -->
+    <!-- ===== 기술문서 목록 ===== -->
     <section class="list-block" id="docs">
       <div class="list-head">
         <h2>기술문서</h2>
-        <span>0건</span>
+        <span>1건</span>
       </div>
-      <ul class="post-list">
-        <li class="empty">아직 작성된 기술문서가 없습니다.</li>
+
+      <!--
+        새 기술문서 추가 방법
+        1) injection 폴더를 통째로 복사해서 폴더 이름을 바꾸고, 안의 index.html 내용을 채웁니다.
+        2) 아래 <li> ... </li> 덩어리 하나를 복사해 맨 위에 붙이고,
+           href(폴더이름/), 연도, 제목, 설명, 태그를 바꿉니다.
+        3) 위의 "1건" 숫자도 바꿔 주세요.
+      -->
+      <ul class="paper-list">
+        <li>
+          <a href="injection/">
+            <span class="year">2026</span>
+            <div>
+              <h3>인젝션(Injection)</h3>
+              <p class="venue">OWASP Top 10:2025 · A05 Injection</p>
+              <p class="summary">인젝션 취약점의 발생 원리와 관련 용어, 탐지·예방·대응 방법, 대표적인 인젝션 유형 정리</p>
+              <span class="tag">Web Security</span><span class="tag">OWASP</span>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        </li>
       </ul>
     </section>
   </main>
