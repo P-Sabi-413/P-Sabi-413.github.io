@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>인젝션(Injection) — 413.log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/logo.png" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body>
+  <script src="../../assets/menu.js" data-root="../../"></script>
+
+  <main class="page-wrap">
+    <a class="back" href="../#docs">← 기술문서 목록으로</a>
+
+    <p class="eyebrow display">TECH DOC · OWASP TOP 10</p>
+    <h1>인젝션(Injection)</h1>
+    <p class="lead">OWASP Top 10:2025 A05 — 발생 원리, 탐지, 예방과 대응</p>
+    <p class="post-date">게시일 <time datetime="2026-11-28">2026.11.28</time></p>
+    <span class="tag">Web Security</span><span class="tag">OWASP</span><span class="tag">Injection</span>
+
+    <!-- ===== 본문 ===== -->
+    <article class="article">
+
+      <!-- ===== 1 ===== -->
+      <h2>1. 인젝션이란?</h2>
+      <p><b>인젝션 취약점(Injection Vulnerability)</b>: 신뢰할 수 없는 사용자 입력값이 인터프리터(Interpreter)에 전달되고, 인터프리터가 해당 입력값의 일부를 명령어로 해석하거나 실행하도록 만드는 애플리케이션의 결함이다.</p>
+      <table class="meta">
+        <tr><th>인터프리터의 예시</th><td>데이터베이스, 명령줄 인터프리터, 브라우저 등</td></tr>
+      </table>
+
+      <!-- ===== 2 ===== -->
+      <h2>2. 인젝션 취약점이 발생하는 경우</h2>
+      <ol>
+        <li>애플리케이션이 사용자가 제공한 데이터를 적절하게 <b>검증(Validate), 필터링(Filter) 또는 정제(Sanitize)</b>하지 않는 경우</li>
+        <li>인터프리터에 전달되는 <b>동적 쿼리나 매개변수화되지 않은 호출</b>에 문맥을 고려한 이스케이프가 적용되지 않은 경우</li>
+        <li>정제되지 않은 데이터를 <b>객체 관계 매핑(ORM, Object-Relational Mapping)의 검색 매개변수</b>에 사용하여 공격자가 추가적인 민감 정보를 추출할 수 있는 경우</li>
+        <li>잠재적으로 악의적인 데이터를 <b>동적 쿼리, 명령어 또는 저장 프로시저(Stored Procedure)</b>에 직접 사용하거나 결합하는 경우. 이 과정에서 SQL 또는 명령어의 구조와 악의적인 데이터가 함께 처리되면 취약점이 발생할 수 있다.</li>
+      </ol>
+
+      <!-- ===== 3 ===== -->
+      <h2>3. 각 경우의 세부적인 설명 및 용어 설명</h2>
+
+      <h3>① 동적 쿼리나 매개변수화되지 않은 호출에 문맥을 고려한 이스케이프가 적용되지 않은 경우</h3>
+
+      <h4>동적 쿼리(Dynamic Query)란?</h4>
+      <table class="meta">
+        <tr><th>쿼리(Query)</th><td>데이터베이스에 데이터의 조회, 추가, 수정, 삭제 등의 작업을 요청하는 명령문</td></tr>
+        <tr><th>동적 쿼리<br />(Dynamic Query)</th><td>프로그램 실행 중 사용자 입력값이나 특정 조건에 따라 쿼리문을 구성하는 방식</td></tr>
+        <tr><th>취약점 발생 이유</th><td>사용자 입력값을 쿼리 문자열에 직접 결합하면, 입력값에 포함된 특수문자 등이 SQL 문법의 일부로 해석될 수 있다.</td></tr>
+      </table>
+
+      <h4>매개변수화되지 않은 호출</h4>
+      <p>프로그램이 사용자 입력값을 별도의 매개변수로 전달하지 않고, 쿼리나 명령어 문자열에 직접 결합하는 방식</p>
+      <ul>
+        <li><b>취약점 발생 이유</b>: 입력값과 쿼리 구조를 분리하지 않아 입력값이 SQL 문법으로 해석될 수 있다.</li>
+      </ul>
+
+      <h4>이스케이프(Escaping)</h4>
+      <p>특정 문맥에서 특별한 의미를 갖는 문자가 명령어나 쿼리의 일부로 해석되지 않도록 적절한 방식으로 처리하는 것</p>
+      <ul>
+        <li>사용자 입력값이 SQL 명령이나 쿼리의 일부로 해석되는 것을 방지하기 때문에 문맥을 고려한 이스케이프를 적용하면 앞서 설명한 문제를 해결할 수 있다.</li>
+      </ul>
+
+      <h4>SQL</h4>
+      <p>관계형 데이터베이스에 정보를 저장하고 처리하기 위한 프로그래밍 언어</p>
+
+      <h3>② 정제되지 않은 데이터를 ORM의 검색 매개변수에 사용하여 공격자가 추가적인 민감 정보를 추출할 수 있는 경우</h3>
+
+      <h4>ORM(Object-Relational Mapping)</h4>
+      <p>객체지향 프로그래밍에서 사용하는 객체와 관계형 데이터베이스의 테이블을 연결하는 기술</p>
+      <ul>
+        <li>ORM을 사용하면 SQL을 직접 작성하지 않고 프로그래밍 언어의 객체와 메서드로 데이터베이스를 다룰 수 있다.</li>
+      </ul>
+      <table class="meta">
+        <tr><th>객체</th><td>관련된 데이터와 기능을 하나로 묶어 프로그램에서 표현한 단위</td></tr>
+        <tr><th>메서드</th><td>객체가 수행하는 동작(함수)</td></tr>
+      </table>
+
+      <h4>취약점 발생 이유 및 결과</h4>
+      <p>정제되지 않은 데이터를 ORM의 검색 매개변수에 안전하지 않은 방식으로 사용하면, 입력값이 HQL 등의 쿼리 문법에 영향을 미칠 수 있다. 그 결과 공격자가 개발자가 의도하지 않은 검색 조건을 구성하여 원래 접근할 수 없었던 추가 데이터나 민감 정보를 조회할 가능성이 생긴다.</p>
+      <table class="meta">
+        <tr><th>HQL</th><td>ORM에서 사용하는 쿼리 언어</td></tr>
+      </table>
+
+      <!-- ===== 4 ===== -->
+      <h2>4. 취약점 탐지 방법</h2>
+      <p>인젝션 취약점 탐지는 개발 단계에서 취약점이 배포되는 것을 방지하기 위해 수행할 수 있으며, 이미 운영 중인 애플리케이션의 보안 상태를 점검하는 데에도 활용된다. 발견된 취약점은 원인 분석 후 수정 등의 대응 조치를 수행해야 한다.</p>
+      <div class="tldr">
+        <strong>효과적인 인젝션 취약점 탐지</strong>
+        소스 코드 검토(Source Code Review)와 자동화된 테스트(Automated Testing)를 함께 수행하는 것
+      </div>
+      <p>자동화된 테스트에는 퍼징(Fuzzing)을 포함할 수 있으며, 다음과 같은 다양한 입력 지점을 대상으로 테스트해야 한다.</p>
+      <ul>
+        <li>매개변수(Parameters)</li>
+        <li>헤더(Headers)</li>
+        <li>URL</li>
+        <li>쿠키(Cookies)</li>
+        <li>JSON, SOAP, XML 등의 데이터 입력값</li>
+      </ul>
+      <table class="meta">
+        <tr><th>퍼징</th><td>프로그램에 다양한 입력값을 자동으로 전달하여 예상하지 못한 오류나 취약점이 발생하는지 확인하는 소프트웨어 테스트 기법</td></tr>
+      </table>
+
+      <!-- ===== 5 ===== -->
+      <h2>5. 취약점 예방 방법</h2>
+
+      <h3>① 데이터와 명령어 및 쿼리를 분리하기</h3>
+      <p>인젝션을 예방하는 가장 좋은 방법은 <b>데이터와 명령어 및 쿼리를 분리</b>하는 것이다. 다음과 같은 방법을 활용할 수 있다.</p>
+      <ul>
+        <li>인터프리터를 사용하지 않도록 애플리케이션의 구조를 변경하거나, 매개변수화된 인터페이스를 제공하는 안전한 API를 사용한다.</li>
+        <li>객체 관계 매핑(ORM) 도구를 활용하여 데이터베이스에 접근하는 방식으로 전환한다.</li>
+      </ul>
+      <blockquote>매개변수화된 저장 프로시저를 사용하더라도 SQL 인젝션이 발생할 수 있다.</blockquote>
+
+      <h3>② 분리를 적용하기 어려운 경우의 보완 방법</h3>
+      <p>데이터와 명령어를 분리하는 방법을 적용하기 어려운 상황에서는 다음과 같은 보완적인 방어 방법을 고려할 수 있다.</p>
+      <table class="meta">
+        <tr><th>입력값 검증</th><td>사전에 정의한 허용 기준에 부합하는 입력값만 받아들이도록 검증한다.</td></tr>
+        <tr><th>특수문자 이스케이프<br />(Escaping)</th><td>사용하는 인터프리터의 문맥에 맞게 특수문자를 처리하여 명령어로 잘못 해석되지 않도록 한다.</td></tr>
+      </table>
+
+      <h4>주의 사항</h4>
+      <ul>
+        <li>테이블 이름이나 컬럼 이름과 같은 SQL 구조 요소는 일반적인 값과 달리 이스케이프를 적용할 수 없다. 따라서 사용자가 테이블이나 컬럼 등의 구조 요소를 직접 지정하도록 하는 방식은 위험할 수 있다. 이러한 문제는 보고서 작성 소프트웨어 등에서 발생할 수 있다.</li>
+        <li>입력값 검증과 이스케이프는 복잡한 문자열을 파싱하고 처리하는 과정을 포함하므로 오류가 발생하기 쉽다. 또한 기반 시스템이나 처리 환경이 변경되면 기존 방어 방식이 제대로 작동하지 않을 수 있다.</li>
+      </ul>
+
+      <h4>추가 참고 사항</h4>
+      <p>애플리케이션에서 사용하는 쿼리 언어 또는 인터프리터에 따라 적절한 예방 지침을 적용해야 한다. 인터프리터마다 문법과 특수문자 처리 방식이 다르기 때문이다.</p>
+
+      <!-- ===== 6 ===== -->
+      <h2>6. 취약점 대응 방법</h2>
+      <p>취약점이 발견되었을 때는 애플리케이션의 소스 코드에 접근할 수 있는지, 기존 소프트웨어를 수정할 수 있는지에 따라 대응 방법을 결정한다.</p>
+
+      <h3>① 소스 코드 수정이 가능한 경우</h3>
+      <ul>
+        <li>취약한 소스 코드를 직접 수정하여 취약점의 근본적인 원인을 제거한다.</li>
+        <li>필요한 경우 애플리케이션의 일부 구조를 재설계하여 취약점이 발생하는 원인을 개선한다.</li>
+      </ul>
+
+      <h3>② 소스 코드 수정이 불가능하거나 수정 비용이 지나치게 큰 경우</h3>
+      <ul>
+        <li><b>가상 패치(Virtual Patching)</b>를 고려할 수 있다.</li>
+      </ul>
+      <table class="meta">
+        <tr><th>가상 패치</th><td>취약한 소프트웨어 자체를 수정하지 않고, 외부 보안 장비나 보호 계층을 통해 취약점이 악용되는 것을 차단하는 방식</td></tr>
+      </table>
+
+      <!-- ===== 7 ===== -->
+      <h2>7. 애플리케이션 유형에 따른 예방 및 대응 방향</h2>
+      <p>OWASP는 애플리케이션의 개발 및 운영 상태와 소스 코드 수정 가능 여부에 따라 크게 세 가지 유형으로 구분하여 설명한다.</p>
+      <table class="meta">
+        <tr><th>① 신규 애플리케이션<br />(New Application)</th><td>현재 설계 단계에 있거나 개발 초기 단계에 있는 새로운 웹 애플리케이션이다.<br />→ 개발 단계부터 안전한 설계와 개발 방식을 적용하여 인젝션 취약점이 발생하지 않도록 예방한다.</td></tr>
+        <tr><th>② 운영 중인 오픈소스 애플리케이션<br />(Productive Open Source Application)</th><td>이미 실제 서비스 환경에서 운영되고 있으며, 소스 코드에 접근하여 수정할 수 있는 애플리케이션이다.<br />→ 취약한 부분을 직접 수정하여 취약점의 원인을 제거한다.</td></tr>
+        <tr><th>③ 운영 중인 비공개 소스 애플리케이션<br />(Productive Closed Source Application)</th><td>이미 운영 중이지만 소스 코드에 접근할 수 없거나 수정하기 어려운 애플리케이션이다.<br />→ 소스 코드 수정이 어렵다면 가상 패치와 같은 외부적인 보호 방법을 고려한다.</td></tr>
+      </table>
+
+      <!-- ===== 8 ===== -->
+      <h2>8. 대표적인 인젝션 유형</h2>
+      <ul>
+        <li>SQL 인젝션(SQL Injection)</li>
+        <li>NoSQL 인젝션(NoSQL Injection)</li>
+        <li>운영체제 명령어 인젝션(OS Command Injection)</li>
+        <li>객체 관계 매핑 인젝션(ORM Injection)</li>
+        <li>LDAP 인젝션(LDAP Injection)</li>
+        <li>표현식 언어 인젝션(Expression Language Injection, EL Injection)</li>
+        <li>객체 그래프 탐색 라이브러리 인젝션(Object Graph Navigation Language, OGNL Injection)</li>
+      </ul>
+      <div class="tldr">
+        <strong>핵심</strong>
+        각 인젝션 유형은 서로 다른 인터프리터나 처리 환경을 대상으로 하지만, 신뢰할 수 없는 입력값이 명령어나 쿼리의 일부로 해석되어 실행된다는 기본적인 발생 원리는 동일하다.
+      </div>
+
+      <!-- ===== 9 ===== -->
+      <h2>9. 참고자료</h2>
+      <ol>
+        <li><a href="https://top10.owasp.org/2025/A05_2025-Injection/" target="_blank" rel="noopener">OWASP Top 10:2025</a></li>
+        <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP Injection Prevention Cheat Sheet</a></li>
+        <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP SQL Injection Prevention Cheat Sheet</a></li>
+        <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP Query Parameterization Cheat Sheet</a></li>
+        <li><a href="https://wstg.owasp.org/latest/
+" target="_blank" rel="noopener">OWASP Web Security Testing Guide (WSTG)</a></li>
+      </ol>
+    </article>
+  </main>
+
+  <footer class="footer">© 413.log</footer>
+  <script src="../../assets/toc.js"></script>
+</body>
+</html>
